@@ -1,0 +1,27 @@
+{
+  "name": "yoga_mysql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marionpol/MVC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marionpol/MVC/issues"
+  },
+  "homepage": "https://github.com/Marionpol/MVC#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.0",
+    "node": "^22.8.0"
+  },
+  "keywords": []
+}
