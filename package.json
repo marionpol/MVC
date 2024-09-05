@@ -21,7 +21,8 @@
     "express-handlebars": "^8.0.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
-    "node": "^22.8.0"
+    "node": "^22.8.0",
+    "node.js": "^0.0.1-security"
   },
   "keywords": []
 }

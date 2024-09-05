@@ -1,4 +1,4 @@
-const conn = require('../utils/db'); 
+const pool = require('../utils/db'); 
 
 class BaseSQLModel {
   constructor(tableName) {
