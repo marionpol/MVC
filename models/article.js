@@ -1,6 +1,5 @@
 const BaseSQLModel = require('./base');
 
-// Create a new class for a specific table
 class ArticleModel extends BaseSQLModel {
   constructor() {
     super('article');
