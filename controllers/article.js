@@ -1,5 +1,4 @@
-
-const articleDbModel = require ('../models/article');
+const articleDbModel = require ('../models/article')
 const articleModel = new articleDbModel();
 
 class articleController {
@@ -16,6 +15,7 @@ class articleController {
         const article = await articleModel.findOne(req.params.slug)
         res.status(201).json({article: article})
     }
+    
 }
 
 module.exports = articleController;
