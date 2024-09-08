@@ -12,5 +12,6 @@ router.post('/article/create', (req, res) => articleController.createNewArticle(
 
 router.post('/article/edit/:id',(req, res) => articleController.updateArticle(req, res));
 
+router.delete('/article/delete/:id', (req, res) => articleController.deleteArticle(req, res));
 
 module.exports = router;

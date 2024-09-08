@@ -53,6 +53,16 @@ class articleController {
         })
     }
 
+    async deleteArticle(req, res){
+        const deletedArticleId = req.params.id;
+
+        await articleModel.delete(deletedArticleId);
+
+        res.status(201).json({
+            message: `deleted article with id ${deletedArticleId}`
+        });
+    }
+
     
 }
 
