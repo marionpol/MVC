@@ -20,12 +20,18 @@ const authorControllerClass =require('./controllers/author')
 const authorController = new authorControllerClass();
 
 
+
 const articleRoutes = require('./routes/articles');
 app.use('/', articleRoutes);
+
 const authorRoutes = require('./routes/authors');
 app.use('/', authorRoutes);
-const userRouters = require('./routes/users');
-app.use('/', userRouters);
+
+const userRoutes = require('./routes/users');
+app.use('/', userRoutes);
+
+const adminRoutes = require('./routes/admin');
+app.use('/', adminRoutes);
 
 
 app.listen(3025, () => {
