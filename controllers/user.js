@@ -16,7 +16,7 @@ class userController {
             return res.status(400).json({message: 'Password has to be longer than 8 characters'});
         }
 
-        const cryptPassword = bcrypt.hash(req.body.password, 10)
+        const cryptPassword = await bcrypt.hash(req.body.password, 10)
 
         const registeredId = await userModel.create({
                 username: req.body.username,
@@ -35,6 +35,31 @@ class userController {
                 })
             }
         
+    }
+
+    async login(req, res){
+        const findUser = await userModel.findOne(req.body.username)
+
+        if(findUser) {
+
+            const isPasswordValid = bcrypt.compare(req.body.password, findUser.password)
+            if(isPasswordValid){
+                const loginSession = req.session.user = {
+                    username: findUser.username,
+                    password: req.body.password
+                }
+                res.json({
+                    message: 'You have successfully logged in',
+                    user_session: loginSession
+                })
+            }
+            else{
+                return res.status(401).json({message: 'Incorrect password'});
+            }
+        }
+        else{
+            return res.status(400).json({message: 'Incorrect username'});
+        }
     }
 }
 
