@@ -42,7 +42,7 @@ class userController {
 
         if(findUser) {
 
-            const isPasswordValid = bcrypt.compare(req.body.password, findUser.password)
+            const isPasswordValid = await bcrypt.compare(req.body.password, findUser.password)
             if(isPasswordValid){
                 const loginSession = req.session.user = {
                     username: findUser.username,
