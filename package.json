@@ -21,10 +21,15 @@
     "express": "^4.19.2",
     "express-handlebars": "^8.0.1",
     "express-session": "^1.18.0",
+    "hbs": "^4.2.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.0",
     "node": "^22.8.0",
-    "node.js": "^0.0.1-security"
+    "node.js": "^0.0.1-security",
+    "path": "^0.12.7"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "tailwindcss": "^3.4.11"
+  }
 }

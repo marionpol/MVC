@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yoga articles</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/styles/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.png">
+</head>
+<body>
+    <header>
+        <a href="/">Yoga Blog</a>
+        <hr>
+    </header>
+    {{#msg}}<div class="alert">{{.}}</div>{{/msg}}
+    <main>
+        {{{body}}}
+        <h1>Homepage</h1>
+    <div class="article-list">
+        {{#articles}}
+        <article>
+            <a href="/article/{{slug}}"><img src="/public/images/{{image}}" alt=""></a>
+            <h2><a href="/article/{{slug}}">{{name}}</a></h2>
+        </article>
+        {{/articles}}
+    </div>
+    </main>
+</body>
+</html>

@@ -1,10 +1,49 @@
 const express = require('express');
 const sessions = require('express-session')
-
+const hbs = require('express-handlebars', 'hbs')
+const path = require('path');
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.set('hbs', hbs.engine({
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/views/layouts/',
+}))
+
+//app.use(express.static('public'))
+app.use('/public', express.static(path.join(__dirname, 'public')))
+
+app.get('/', (req, res) => {
+    let query ="SELECT * FROM article";
+    let articles = []
+    con.query(query, (err, result) => {
+        if(err) throw err;
+        articles = result
+        console.log(articles)
+        res.render('layouts/main', {
+        articles: articles
+        })
+    })
+});
+
+const mysql = require('mysql2')
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "qwerty",
+    database: "db"
+})
+
+con.connect(function(err){
+    if(err) throw err;
+    console.log("Connected to joga_mysql db")
+})
 
 app.use(sessions({
     secret: "thisismysecretkey",
