@@ -4,6 +4,10 @@ const userModel = new userDbModel();
 
 class userController {
 
+    async registerForm(req, res){
+        res.render('register');
+    }
+
     async register(req, res){
         
         const userExists = await userModel.findOne(req.body.username)
@@ -35,6 +39,10 @@ class userController {
                 })
             }
         
+    }
+
+    async loginForm(req, res){
+        res.render('login');
     }
 
     async login(req, res){

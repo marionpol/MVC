@@ -16,6 +16,10 @@ class articleController {
         res.status(201).render('article', {article: article})
     }
 
+    async createForm(req, res) {
+        res.render('create');
+      }
+
     async createNewArticle(req, res){
         const newArticle = {
             name: req.body.name,
@@ -27,7 +31,7 @@ class articleController {
         }
         const articleId = await articleModel.create(newArticle);
 
-        res.status(201).json({
+        res.status(201).json('create', {
             message: `created article with id ${articleId}`,
             article: {id: articleId, ...newArticle}
         })
