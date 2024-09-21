@@ -1,0 +1,35 @@
+
+<h1>Edit Article</h1>
+
+<form method="post" action="/admin/article/edit/{{article.id}}">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="{{article.name}}"
+            placeholder="Article Name">
+
+            <label for="slug">Slug</label>
+            <input type="text" name="slug" id="slug" value="{{article.slug}}"
+            placeholder="Article Slug">
+
+            <label for="image">Image</label>
+            <input type="text" name="image" id="image" value="{{article.image}}"
+            placeholder="Article image">
+
+            <label for="body">Body</label>
+            <textarea name="body" id="body"
+            placeholder="Article Body" value="{{article.body}}"></textarea>
+
+            <label for="author_id">Author id</label>
+            <input type="text" name="author_id" id="author_id" placeholder="Article author">
+
+            <input type="hidden" name="id" value="{{article.id}}">
+
+            <button type="submit" class="button">Update Article</button>
+    </form>
+
+    <h2>Delete Article</h2>
+    <form method="post" action="/admin/article/delete/{{article.id}}">
+
+        <input type="hidden" name="id" value="{{article.id}}">
+        <button type="submit" class="button danger">Delete Article</button>
+    </form>

@@ -1,8 +1,21 @@
 const articleDbModel = require('../../models/article')
 const ArticleController = require('../article')
-const articleModel = new articleDbModel()
+const ArticleModel = new articleDbModel()
 
 class articleAdminController extends ArticleController {
+
+
+    async getAllArticles(req, res){
+        return await ArticleModel.findAll(); 
+    }
+
+    async getArticleById(id) {
+        return await ArticleModel.findById(id); 
+    }
+
+    async createForm(req, res) {
+        res.render('create');
+      }
 
     async createNewArticle(req, res){
         const newArticle = {
@@ -11,9 +24,9 @@ class articleAdminController extends ArticleController {
             image: req.body.image,
             body: req.body.body,
             published: new Date().toISOString().slice(0, 19).replace('T', ' '),
-            author_id: req.body.author_id
+            author_id: req.body.id
         }
-        const articleId = await articleModel.create(newArticle);
+        const articleId = await ArticleModel.create(newArticle);
 
         res.status(201).json({
             message: `created article with id ${articleId}`,
@@ -33,7 +46,7 @@ class articleAdminController extends ArticleController {
             author_id: req.body.author_id
         }
 
-        await articleModel.update(updatedArticleId, updatedArticle);
+        await ArticleModel.update(updatedArticleId, updatedArticle);
 
         res.status(201).json({
             message: `updated article with id ${updatedArticleId}`,
@@ -44,7 +57,7 @@ class articleAdminController extends ArticleController {
     async deleteArticle(req, res){
         const deletedArticleId = req.params.id;
 
-        await articleModel.delete(deletedArticleId);
+        await ArticleModel.delete(deletedArticleId);
 
         res.status(201).json({
             message: `deleted article with id ${deletedArticleId}`

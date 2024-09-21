@@ -1,6 +1,6 @@
 <h1>Create Article</h1>
 
-<form method="post" action="/article/create">
+<form method="post" action="/admin/article/create">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" placeholder="Article Name">
 
@@ -12,10 +12,12 @@
 
     <label for="body">Body</label>  
 
-    <textarea name="body" id="body" placeholder="Article  
-    body"></textarea>
+    <textarea name="body" id="body" placeholder="Article body"></textarea>
 
-    <button>Publish</button>
+    <label for="author_id">Author id</label>
+    <input type="text" name="author_id" id=author_id" placeholder="Article author">
+
+    <button type="submit">Publish</button>
 </form>
 
 

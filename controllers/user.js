@@ -33,11 +33,8 @@ class userController {
                     username: userData.username,
                     user_id: userData.id
                 }
-                res.json({
-                    message: 'New user is registered',
-                    user_session: req.session.user
-                })
-            }
+                res.redirect('/');
+              }
         
     }
 
@@ -56,19 +53,22 @@ class userController {
                     username: findUser.username,
                     password: req.body.password
                 }
-                res.json({
-                    message: 'You have successfully logged in',
-                    user_session: loginSession
-                })
+                req.session.user = loginSession
+                if (findUser.username === 'admin') {
+                    return res.redirect('/admin');
+                  } else {
+                    res.json({
+                      message: 'You have successfully logged in',
+                      user_session: loginSession
+                    })
+                  }
+                } else {
+                  return res.status(401).json({ message: 'Incorrect password' });
+                }
+              } else {
+                return res.status(400).json({ message: 'Incorrect username' });
+              }
             }
-            else{
-                return res.status(401).json({message: 'Incorrect password'});
-            }
-        }
-        else{
-            return res.status(400).json({message: 'Incorrect username'});
-        }
-    }
 }
 
 module.exports = userController;
